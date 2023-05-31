@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class MenuUIHandler : MonoBehaviour
 {
     public InputField InputNameField;
-   public void NewNameText(Text name)
+   public void OnNameEdit(string name)
     {
-        MainManager.Instance.NameText = name;
+        MainManager.Instance.NameText.text = name;
     }
 
-    //Need to figure out how to handle the name input
+    private void Start()
+    {
+        InputNameField.onEndEdit.AddListener(OnNameEdit);
+    }
 }
